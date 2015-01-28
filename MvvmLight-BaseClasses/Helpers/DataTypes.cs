@@ -8,14 +8,5 @@ namespace MvvmLight_BaseClasses.Helpers
 {
     class Forecast
     {
-        
-
-        public  int Qty{
-            get {return _qty};
-            set{v};
-
-        }
-
-        int OriginMonthOffset;
     }
 }

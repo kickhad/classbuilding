@@ -1,5 +1,9 @@
 ﻿using System.Windows;
 using MvvmLight_BaseClasses.ViewModel;
+using MvvmLight_BaseClasses.Model;
+using GalaSoft.MvvmLight.Command;
+using System.Threading.Tasks;
+using System;
 
 namespace MvvmLight_BaseClasses
 {
@@ -13,8 +17,16 @@ namespace MvvmLight_BaseClasses
         /// </summary>
         public MainWindow()
         {
-            InitializeComponent();
-            Closing += (s, e) => ViewModelLocator.Cleanup();
+            InitializeComponent();          
+            
+ //4           Closing += (s, e) => ViewModelLocator.Cleanup();
+            
+        }
+        private async void RefreshClick(object sender, EventArgs e)
+        {
+            var vm = (MainViewModel)DataContext;
+            
+            vm.RefreshCommand.Execute(null);
         }
     }
 }

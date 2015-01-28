@@ -5,7 +5,9 @@ using System.Text;
 
 namespace MvvmLight_BaseClasses.Model.Planning
 {
-    public class PlanningItemHorizon
+    public class PlanningItemSnapshot
     {
+        /// <summary>
+       
     }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MvvmLight_BaseClasses.Model.Planning
+namespace MvvmLight_BaseClasses.Model
 {
-    class PlanningItemForecast
+    public interface IMaterialDataService 
     {
+        Task<IEnumerable<MaterialData>> Begin();
     }
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmLight-BaseClasses", "MvvmLight-BaseClasses\MvvmLight-BaseClasses.csproj", "{FD958B7A-2EB3-4C48-84F3-0C5C25615068}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WBDB", "WBDB\WBDB.sqlproj", "{E8BA515E-A233-4DF3-89BC-366D2848B1E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{FD958B7A-2EB3-4C48-84F3-0C5C25615068}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD958B7A-2EB3-4C48-84F3-0C5C25615068}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD958B7A-2EB3-4C48-84F3-0C5C25615068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8BA515E-A233-4DF3-89BC-366D2848B1E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8BA515E-A233-4DF3-89BC-366D2848B1E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8BA515E-A233-4DF3-89BC-366D2848B1E3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E8BA515E-A233-4DF3-89BC-366D2848B1E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8BA515E-A233-4DF3-89BC-366D2848B1E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8BA515E-A233-4DF3-89BC-366D2848B1E3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

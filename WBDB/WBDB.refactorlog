@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="c4705753-6c12-4fd8-9092-fdebf4660da2" ChangeDateTime="01/18/2015 23:34:34">
+    <Property Name="ElementName" Value="[dbo].[GenericItemData].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GenericItemData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Material" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4bd3d242-abc9-4e0f-a73c-8ebaca66d69f" ChangeDateTime="01/18/2015 23:37:18">
+    <Property Name="ElementName" Value="[dbo].[CustomerItemData].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CustomerItemData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TopLevel" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="777cbf7e-daca-43f3-adcb-dc56211aaed2" ChangeDateTime="01/18/2015 23:40:19">
+    <Property Name="ElementName" Value="[dbo].[Forecast].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Forecast]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TopLevel" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="239dae6d-44b0-4e67-a566-0ea7cb8dc087" ChangeDateTime="01/18/2015 23:43:07">
+    <Property Name="ElementName" Value="[dbo].[Historical].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Historical]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TopLevel" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="29f0e5dd-c55e-4488-a21a-a6b0a7449e30" ChangeDateTime="01/18/2015 23:46:57">
+    <Property Name="ElementName" Value="[dbo].[Historical].[3Month]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Historical]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Avg3Month" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1098f932-d9ce-4138-ac34-738a2a93f463" ChangeDateTime="01/18/2015 23:47:04">
+    <Property Name="ElementName" Value="[dbo].[Historical].[6month]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Historical]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Avg6Month" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="396099d5-7dce-493f-963e-983826cec183" ChangeDateTime="01/18/2015 23:47:57">
+    <Property Name="ElementName" Value="[dbo].[Historical].[PeakConsumption]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Historical]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PeakConsumptionQty" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="524241e9-caa4-4145-9289-d60f2062e572" ChangeDateTime="01/18/2015 23:48:17">
+    <Property Name="ElementName" Value="[dbo].[Historical].[PeakConsumptionMonth]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Historical]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PeakConsumptionMonthOffset" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e73fdfed-ee74-4638-ab14-654babb464a8" ChangeDateTime="01/18/2015 23:48:50">
+    <Property Name="ElementName" Value="[dbo].[Historical].[MaxConsumoptionQty]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Historical]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MinConsumptionMonthOffset" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6e16ded4-c35e-4ca0-b912-44d8ff0fa5ba" ChangeDateTime="01/18/2015 23:52:02">
+    <Property Name="ElementName" Value="[dbo].[ItemHorizon].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ItemHorizon]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TopLevel" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5b6af263-bb25-4e65-ab74-6dd8690243b1" ChangeDateTime="01/19/2015 00:05:06">
+    <Property Name="ElementName" Value="[dbo].[Historical].[8MonthHistory]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Historical]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EightMonthHistory" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="50d4ea5f-d7c9-402c-bc55-7325115ada4d" ChangeDateTime="01/20/2015 23:02:31">
+    <Property Name="ElementName" Value="[dbo].[TopLevel].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TopLevel]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TopLevelID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8037ae15-1761-4d17-93df-c956b0631e8e" ChangeDateTime="01/20/2015 23:03:25">
+    <Property Name="ElementName" Value="[dbo].[TopLevel].[CatalogueVersion]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TopLevel]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CatalogueID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cac88387-7365-4416-98ea-c77268320c00" ChangeDateTime="01/20/2015 23:05:39">
+    <Property Name="ElementName" Value="[dbo].[Forecast].[Qty]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Forecast]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="QtyArray" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2bba8e58-be6b-44e4-89a8-b6a7924a6dee" ChangeDateTime="01/20/2015 23:08:04">
+    <Property Name="ElementName" Value="[dbo].[ItemHorizon].[Qty]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ItemHorizon]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="QtyArray" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d339fb2b-0201-4091-9749-65d111e35bb4" ChangeDateTime="01/20/2015 23:09:51">
+    <Property Name="ElementName" Value="[dbo].[Forecast].[QtyArray]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Forecast]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="M0" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b7c9cd7e-98a4-4e0f-b969-d9817846e274" ChangeDateTime="01/20/2015 23:10:02">
+    <Property Name="ElementName" Value="[dbo].[Forecast].[QtyArrayLength]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Forecast]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="m1" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="28704bbf-7865-40e6-ba5b-27d4cdfa7b81" ChangeDateTime="01/20/2015 23:10:06">
+    <Property Name="ElementName" Value="[dbo].[Forecast].[m1]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Forecast]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="M1" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f16991b7-4a09-420e-b918-8753d74ac603" ChangeDateTime="01/20/2015 23:11:15">
+    <Property Name="ElementName" Value="[dbo].[Forecast].[M0]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Forecast]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="oFFSE" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2d74d078-342a-443d-be34-f5887ced3a00" ChangeDateTime="01/20/2015 23:11:19">
+    <Property Name="ElementName" Value="[dbo].[Forecast].[oFFSE]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Forecast]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Offset" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e02b1743-e094-4224-87e8-6f19611059d8" ChangeDateTime="01/20/2015 23:11:26">
+    <Property Name="ElementName" Value="[dbo].[Forecast].[M1]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Forecast]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Qty" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b0ffa269-466f-47aa-ac57-a177bc39a809" ChangeDateTime="01/20/2015 23:12:24">
+    <Property Name="ElementName" Value="[dbo].[ItemHorizon].[QtyArray]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ItemHorizon]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Offset" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="142c89c2-fa64-4b1e-8b52-e339f4b1dc49" ChangeDateTime="01/20/2015 23:12:44">
+    <Property Name="ElementName" Value="[dbo].[ItemHorizon].[QtyArrayLength]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ItemHorizon]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Qty" />
+  </Operation>
+</Operations>

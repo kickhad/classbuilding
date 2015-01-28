@@ -1,32 +1,63 @@
-﻿<Window x:Class="MvvmLight_BaseClasses.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.ignore.com"
+        xmlns:vm="clr-namespace:MvvmLight_BaseClasses.ViewModel" 
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://www.galasoft.ch/mvvmlight" x:Class="MvvmLight_BaseClasses.MainWindow"
         mc:Ignorable="d ignore"
         Height="300"
         Width="300"
         Title="MVVM Light Application"
-        DataContext="{Binding Main, Source={StaticResource Locator}}">
+        >
     
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Skins/MainSkin.xaml" />
+                <ResourceDictionary Source="Styles/PlanningStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid x:Name="LayoutRoot">
+	<Window.DataContext>
+		<Binding Path="Main" Source="{StaticResource Locator}"/>
+	</Window.DataContext>
 
-        <TextBlock FontSize="36"
-                   FontWeight="Bold"
-                   Foreground="Purple"
-                   Text="{Binding WelcomeTitle}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   TextWrapping="Wrap" />
+	<Grid x:Name="LayoutRoot">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Click="RefreshClick" Content="yyy"></Button>
+            <ListView  ItemsSource="{Binding Materials}" Grid.Column="0" Width="200" >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="12,0,12,0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding MFS}" Grid.Row="0" />
+                            <TextBlock Text="{Binding ExtMaterial}" Grid.Row="0" />
+                            <TextBlock Text="{Binding Brand}" Grid.Row="1" />
+                            <TextBlock Text="{Binding Shape}" Grid.Row="1" />
+
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </Grid>
+
 
     </Grid>
 </Window>

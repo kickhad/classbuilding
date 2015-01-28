@@ -1,4 +1,8 @@
-﻿using GalaSoft.MvvmLight;
+using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using MvvmLight_BaseClasses.Model;
 
 namespace MvvmLight_BaseClasses.ViewModel
@@ -6,67 +10,119 @@ namespace MvvmLight_BaseClasses.ViewModel
     /// <summary>
     /// This class contains properties that the main View can data bind to.
     /// <para>
+    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
+    /// </para>
+    /// <para>
+    /// You can also use Blend to data bind with the tool's support.
+    /// </para>
+    /// <para>
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        private readonly IDataService _dataService;
+        private readonly IMaterialDataService _materialDataService;
+        //private readonly IDialogService _dialogService;
+        //private readonly INavigationService _navigationService;
 
-        /// <summary>
-        /// The <see cref="WelcomeTitle" /> property's name.
-        /// </summary>
-        public const string WelcomeTitlePropertyName = "WelcomeTitle";
+        private RelayCommand _beginCommand;
+        //private RelayCommand<Friend> _saveCommand;
+        //private RelayCommand<Friend> _showDetailsCommand;
 
-        private string _welcomeTitle = string.Empty;
+        public ObservableCollection<MaterialData> Materials
+        {
+            get;
+            private set;
+        }
 
-        /// <summary>
-        /// Gets the WelcomeTitle property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public string WelcomeTitle
+        public RelayCommand RefreshCommand
         {
             get
             {
-                return _welcomeTitle;
-            }
-
-            set
-            {
-                if (_welcomeTitle == value)
-                {
-                    return;
-                }
-
-                _welcomeTitle = value;
-                RaisePropertyChanged(WelcomeTitlePropertyName);
+                return _beginCommand
+                       ?? (_beginCommand= new RelayCommand(
+                           async () =>
+                           {
+                               await Begin();
+                           }));
             }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
-        public MainViewModel(IDataService dataService)
+        public MainViewModel(
+           IMaterialDataService materialDataService)
+        //IDialogService dialogService,
+        //INavigationService navigationService)
         {
-            _dataService = dataService;
-            _dataService.GetData(
-                (item, error) =>
-                {
-                    if (error != null)
-                    {
-                        // Report error here
-                        return;
-                    }
-
-                    WelcomeTitle = item.Title;
-                });
+            _materialDataService = materialDataService;
+            //_dialogService = dialogService;
+            //_navigationService = navigationService;
+            Materials = new ObservableCollection<MaterialData>();
         }
 
-        ////public override void Cleanup()
-        ////{
-        ////    // Clean up if needed
 
-        ////    base.Cleanup();
-        ////}
-    }
+//#if DEBUG
+//            if (IsInDesignMode)
+//            {
+//                Begin();
+//            }
+//#endif
+//        }
+
+        private async Task Begin()
+        {
+            Materials.Clear();
+
+            var materials = await _materialDataService.Begin();
+
+            foreach (var material in materials)
+            {
+                Materials.Add(material);
+            }
+        }
+    
+        //public ObservableCollection<MaterialData> ItemDatas { get; private set; }
+
+        //private MaterialData _SelectedItemData;
+        //private RelayCommand _BeginRelayCommand;
+
+        //private async Task Begin()
+        //{
+            
+        //}
+        //public RelayCommand BeginRelayCommand
+        //{
+        //    get
+        //    {
+        //        return _BeginRelayCommand
+        //               ?? (_BeginRelayCommand = new RelayCommand(
+        //                   async () =>
+        //                   {
+        //                       await Begin();
+        //                   }));
+        //    }
+        //}
+        //public MaterialData SelectedItemData
+        //{
+        //    get { return _SelectedItemData; }
+        //    set { Set(() => SelectedItemData, ref _SelectedItemData, value); }
+
+        //}   
+        //    /// <summary>
+        ///// Initializes a new instance of the MainViewModel class.
+        ///// </summary>
+        //public MainViewModel()
+        //{
+        //    //if (IsInDesignMode)
+        //    ////{
+        //    ////    // Code runs in Blend --> create design time data.
+        //    ////}
+        //    //else
+        //    //{
+        //       //  = _planningViewModel;
+        //    //}
+        //}
+
+       
+    
+}
 }
