@@ -1,9 +1,12 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using MvvmLight_BaseClasses.Model;
+using MvvmLight_BaseClasses;
 
 namespace MvvmLight_BaseClasses.ViewModel
 {
@@ -26,6 +29,8 @@ namespace MvvmLight_BaseClasses.ViewModel
         //private readonly INavigationService _navigationService;
 
         private RelayCommand _beginCommand;
+        private RelayCommand<MaterialData> _selectMaterialCommand;
+        
         //private RelayCommand<Friend> _saveCommand;
         //private RelayCommand<Friend> _showDetailsCommand;
 
@@ -47,7 +52,33 @@ namespace MvvmLight_BaseClasses.ViewModel
                            }));
             }
         }
-
+        
+        //public RelayCommand<MaterialData> SelectMaterialCommand
+        //{
+        //    get
+        //    {
+        //        return _selectMaterialCommand
+        //            ?? (_selectMaterialCommand = new RelayCommand<MaterialData>(
+        //                                  material =>
+        //                                  {
+        //                                     SelectedMaterial = material;
+                                              
+        //                                  }));
+        //    }
+        //}
+        private MaterialData _selectedMaterial;
+        public MaterialData SelectedMaterial
+        {
+            get
+            {
+                return _selectedMaterial;
+            }
+            set
+            {
+                Set(() => SelectedMaterial, ref _selectedMaterial, value);
+                RaisePropertyChanged(() => SelectedMaterial);
+            }
+        }
         public MainViewModel(
            IMaterialDataService materialDataService)
         //IDialogService dialogService,
@@ -57,16 +88,16 @@ namespace MvvmLight_BaseClasses.ViewModel
             //_dialogService = dialogService;
             //_navigationService = navigationService;
             Materials = new ObservableCollection<MaterialData>();
+        
+
+
+#if DEBUG
+            if (IsInDesignMode)
+            {
+                Begin();
+            }
+#endif
         }
-
-
-//#if DEBUG
-//            if (IsInDesignMode)
-//            {
-//                Begin();
-//            }
-//#endif
-//        }
 
         private async Task Begin()
         {

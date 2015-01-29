@@ -36,22 +36,25 @@ namespace MvvmLight_BaseClasses.ViewModel
                get
                 {
                     return Application.Current.Resources["Locator"] as ViewModelLocator;
+
                 }
            }
-        
 
 
-          
-    
-        public MainViewModel Main
-        {
-            get;
-            private set;
-        }
+
+
+
+           public MainViewModel Main
+           {
+               get;
+               private set;
+           }
         
         public ViewModelLocator()
         {
             IMaterialDataService materialDataService;
+            //ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            //SimpleIoc.Default.Register<MainViewModel>();
             materialDataService = new MaterialDataService();
             Main = new MainViewModel(materialDataService); //, dialogService, navigationService);
         }

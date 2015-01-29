@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using GalaSoft.MvvmLight.Threading;
+using MvvmLight_BaseClasses.Model;
 
 namespace MvvmLight_BaseClasses
 {
@@ -8,9 +9,20 @@ namespace MvvmLight_BaseClasses
     /// </summary>
     public partial class App : Application
     {
+        //THIS MAY WORK WITH FRAME AS HOST FOR NAV Public static PhoneApplicationFrame RootFrame
+        //{
+        //    get;
+        //    private set;
+        //}
+        public static MaterialData SelectedMaterial
+        {
+            get;
+            set;
+        }
         static App()
         {
             DispatcherHelper.Initialize();
         }
+
     }
 }

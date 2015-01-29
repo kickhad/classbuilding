@@ -6,13 +6,13 @@
         xmlns:ignore="http://www.ignore.com"
         xmlns:vm="clr-namespace:MvvmLight_BaseClasses.ViewModel" 
         
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://www.galasoft.ch/mvvmlight" x:Class="MvvmLight_BaseClasses.MainWindow"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://www.galasoft.ch/mvvmlight" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="MvvmLight_BaseClasses.MainWindow"
         mc:Ignorable="d ignore"
-        Height="300"
-        Width="300"
+        Height="550.657"
+        Width="1200.71"
         Title="MVVM Light Application"
         >
-    
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,38 +22,43 @@
         </ResourceDictionary>
     </Window.Resources>
 
-	<Window.DataContext>
-		<Binding Path="Main" Source="{StaticResource Locator}"/>
-	</Window.DataContext>
+    <Window.DataContext>
+        <Binding Path="Main" Source="{StaticResource Locator}"/>
+    </Window.DataContext>
 
-	<Grid x:Name="LayoutRoot">
 
-        <Grid>
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="145*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="{x:Type ListBoxItem}">
+                <Style.Triggers>
+                    <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                        <Setter Property="Background" Value="#19f39611"></Setter>
+                    </Trigger>
+                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                        <Setter Property="Background" Value="#19000000"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+
+        <Grid Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="259*" />
+                <ColumnDefinition Width="28*" />
+                <ColumnDefinition Width="161*" />
+                <ColumnDefinition Width="745*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Click="RefreshClick" Content="yyy"></Button>
-            <ListView  ItemsSource="{Binding Materials}" Grid.Column="0" Width="200" >
+            <ListBox SelectedItem="{Binding SelectedMaterial, Mode=TwoWay}"
+				ItemsSource="{Binding Materials}" AlternationCount="2"
+				ItemTemplate="{StaticResource MaterialsTemplate}"                       
+                     >
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="12,0,12,0" >
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="{Binding MFS}" Grid.Row="0" />
-                            <TextBlock Text="{Binding ExtMaterial}" Grid.Row="0" />
-                            <TextBlock Text="{Binding Brand}" Grid.Row="1" />
-                            <TextBlock Text="{Binding Shape}" Grid.Row="1" />
-
-
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            </ListBox>
+            <DataGrid Grid.Column="2" Margin="10,0" VerticalAlignment="Top" Height="86.134"/>
 
 
         </Grid>

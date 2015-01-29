@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 
 namespace MvvmLight_BaseClasses.Model
 {
+   
     [Table(Name="vItemData")]
     public class sqlMaterialData : ObservableObject
     {
@@ -21,22 +22,25 @@ namespace MvvmLight_BaseClasses.Model
         public string Brand
         { get; set; }
 
-        ////[Column]
-        ////public decimal PcWt
-        ////{ get; set; }
+        [Column]
+        public decimal PcWt
+        { get; set; }
 
 
-        ////[Column]
-        ////public string Shape
-        ////{ get; set; }
+        [Column]
+        public string Shape
+        { get; set; }
 
-        ////[Column]
-        ////public int ExtMaterial
-        ////{ get; set; }
+        [Column]
+        public int ExtMaterial
+        { get; set; }
 
-        ////[Column]
-        ////public string CustomerMaterial
-        ////{ get; set; }
+        [Column]
+        public int MFS
+        { get; set; }
+        //[Column]
+        //public string CustomerMaterial
+        //{ get; set; }
 
         ////[Column]
         ////public string ItemStatus
@@ -74,9 +78,12 @@ namespace MvvmLight_BaseClasses.Model
         public int ExtMaterial
         { get; set; }
         
+        //[JsonProperty]
+        //public string CustomerMaterial
+        //{get;set;}
         [JsonProperty]
-        public string CustomerMaterial
-        {get;set;}
+        public int MFS
+        { get; set; }
 
         [JsonProperty]
         public string ItemStatus

@@ -24,7 +24,7 @@ namespace MvvmLight_BaseClasses.Model
 
 
         //}
-
+#pragma warning disable 1998
         public async Task<IEnumerable<MaterialData>> Begin()
         {
             DataContext db = new DataContext
@@ -46,7 +46,6 @@ namespace MvvmLight_BaseClasses.Model
             str.Append(json.ToString());
             str.Append("}");
 
-
             var result = JsonConvert.DeserializeObject<ListOfMaterialData>(str.ToString()); 
             return result.Data;
             //var result = JsonConvert.DeserializeObject<ListOfMaterialData>(custQuery.AsEnumerable<ListOfMaterialData);
@@ -58,6 +57,7 @@ namespace MvvmLight_BaseClasses.Model
             //return vItemData;
 
         }
+#pragma warning disable 1998
     }
 }
 

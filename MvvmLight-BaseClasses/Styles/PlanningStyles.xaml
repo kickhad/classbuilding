@@ -1,6 +1,29 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:pvm="clr-namespace:MvvmLight_BaseClasses.ViewModel"
-                    >
+                    xmlns:b="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d">
+
+
+    
+    <DataTemplate  x:Key="MaterialsTemplate">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding MFS}"  />
+        <TextBlock Text=" - " />
+        <TextBlock Text="{Binding Material}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Brand}" />
+        <TextBlock Text=" - " />
+        <TextBlock Text="{Binding Shape}"  />
+            </StackPanel>
+        </StackPanel>
+  
+                     
+                    </DataTemplate>
+
+
 
 </ResourceDictionary>

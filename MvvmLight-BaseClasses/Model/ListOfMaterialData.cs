@@ -16,5 +16,15 @@ namespace MvvmLight_BaseClasses.Model
             get;
             set;
         }
+        public class MonthlyBucket
+        {
+
+        }
+        public List<MonthlyBucket> MonthlyBuckets
+        {
+            get;
+            set;
+
+        }
     }
 } 
