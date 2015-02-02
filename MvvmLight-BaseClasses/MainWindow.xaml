@@ -27,11 +27,13 @@
     </Window.DataContext>
 
 
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot"> 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="145*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />                
+                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="65*"/>
+            </Grid.ColumnDefinitions>
+      
         <Grid.Resources>
             <Style TargetType="{x:Type ListBoxItem}">
                 <Style.Triggers>
@@ -45,24 +47,109 @@
             </Style>
         </Grid.Resources>
 
-        <Grid Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="259*" />
-                <ColumnDefinition Width="28*" />
-                <ColumnDefinition Width="161*" />
-                <ColumnDefinition Width="745*"/>
-            </Grid.ColumnDefinitions>
-            <ListBox SelectedItem="{Binding SelectedMaterial, Mode=TwoWay}"
+      
+           
+            <ListBox Grid.Column="0" Margin="5,10,0,0" SelectedItem="{Binding Phrases, Mode=TwoWay}"
 				ItemsSource="{Binding Materials}" AlternationCount="2"
 				ItemTemplate="{StaticResource MaterialsTemplate}"                       
                      >
 
             </ListBox>
-            <DataGrid Grid.Column="2" Margin="10,0" VerticalAlignment="Top" Height="86.134"/>
+        <StackPanel Grid.Column="1" Margin="15,10,0,0">
+            <StackPanel  DataContext="{Binding SelectedMaterial}" Orientation="Vertical" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Brand" />
+                    <TextBlock Grid.Column="1" Text="{Binding Brand}" HorizontalAlignment="Right" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Shape" />
+                    <TextBlock Grid.Column="1" Text="{Binding Shape}" HorizontalAlignment="Right" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Material" />
+                    <TextBlock Grid.Column="1" Text="{Binding ExtMaterial}" HorizontalAlignment="Right" />
+
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Pallet Count" />
+                    <TextBlock Grid.Column="1" Text="{Binding PlCt}" HorizontalAlignment="Right" />
+                </Grid>
+                
+                
+
+                
+                 
+
+                  
+
+            </StackPanel>
 
 
-        </Grid>
+            <StackPanel Margin="0,10,0,0" DataContext="{Binding SelectedMaterial}" Orientation="Vertical">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column = "0"  Text="Max Usage" />
+                    <TextBlock Grid.Column="1"  Text="{Binding MaxIn8}" HorizontalAlignment="Right" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column = "0"  Text="Min Usage" />
+                    <TextBlock Grid.Column="1"  Text="{Binding MinIn8}" HorizontalAlignment="Right" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column = "0"  Text="Average [3mo]" />
+                    <TextBlock  Grid.Column="1"  Text="{Binding MonthlyAverage3}" HorizontalAlignment="Right"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"  Text="Average [6mo]" />
+                    <TextBlock Grid.Column="1"   Text="{Binding MonthlyAverage6}" HorizontalAlignment="Right" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column = "0"  Text="Average [12mo]" />
+                    <TextBlock  Grid.Column="1" Text="{Binding MonthlyAverage12}" HorizontalAlignment="Right" />
+                </Grid>
+            </StackPanel>
 
 
+
+        </StackPanel>
     </Grid>
 </Window>

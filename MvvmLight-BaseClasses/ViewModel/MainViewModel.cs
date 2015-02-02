@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using GalaSoft.MvvmLight;
+using System.Linq;
+using System.Data.Linq;
 using GalaSoft.MvvmLight.Command;
 using MvvmLight_BaseClasses.Model;
 using MvvmLight_BaseClasses;
+using System.Windows.Data;
+using System.ComponentModel;
 
 namespace MvvmLight_BaseClasses.ViewModel
 {
@@ -24,16 +28,13 @@ namespace MvvmLight_BaseClasses.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        public ICollectionView phraseView;
         private readonly IMaterialDataService _materialDataService;
         //private readonly IDialogService _dialogService;
         //private readonly INavigationService _navigationService;
 
         private RelayCommand _beginCommand;
-        private RelayCommand<MaterialData> _selectMaterialCommand;
-        
-        //private RelayCommand<Friend> _saveCommand;
-        //private RelayCommand<Friend> _showDetailsCommand;
-
+       
         public ObservableCollection<MaterialData> Materials
         {
             get;
@@ -53,19 +54,6 @@ namespace MvvmLight_BaseClasses.ViewModel
             }
         }
         
-        //public RelayCommand<MaterialData> SelectMaterialCommand
-        //{
-        //    get
-        //    {
-        //        return _selectMaterialCommand
-        //            ?? (_selectMaterialCommand = new RelayCommand<MaterialData>(
-        //                                  material =>
-        //                                  {
-        //                                     SelectedMaterial = material;
-                                              
-        //                                  }));
-        //    }
-        //}
         private MaterialData _selectedMaterial;
         public MaterialData SelectedMaterial
         {
@@ -88,13 +76,22 @@ namespace MvvmLight_BaseClasses.ViewModel
             //_dialogService = dialogService;
             //_navigationService = navigationService;
             Materials = new ObservableCollection<MaterialData>();
-        
+
+           
+            this.SelectedMaterialsInternal = new ObservableCollection<MaterialData>();
+            this.SelectedMaterials = new CollectionViewSource();
+            this.SelectedMaterials.Source = this.SelectedMaterialsInternal;
+            RefreshCommand.Execute(null);
+            
+
 
 
 #if DEBUG
             if (IsInDesignMode)
             {
                 Begin();
+                //SelectedMaterial = Materials[0];
+               
             }
 #endif
         }
@@ -108,34 +105,12 @@ namespace MvvmLight_BaseClasses.ViewModel
             foreach (var material in materials)
             {
                 Materials.Add(material);
-            }
+                
+            }                     
         }
-    
-        //public ObservableCollection<MaterialData> ItemDatas { get; private set; }
+        public CollectionViewSource SelectedMaterials { get; set; }
 
-        //private MaterialData _SelectedItemData;
-        //private RelayCommand _BeginRelayCommand;
-
-        //private async Task Begin()
-        //{
-            
-        //}
-        //public RelayCommand BeginRelayCommand
-        //{
-        //    get
-        //    {
-        //        return _BeginRelayCommand
-        //               ?? (_BeginRelayCommand = new RelayCommand(
-        //                   async () =>
-        //                   {
-        //                       await Begin();
-        //                   }));
-        //    }
-        //}
-        //public MaterialData SelectedItemData
-        //{
-        //    get { return _SelectedItemData; }
-        //    set { Set(() => SelectedItemData, ref _SelectedItemData, value); }
+        private ObservableCollection<MaterialData> SelectedMaterialsInternal { get; set; }
 
         //}   
         //    /// <summary>

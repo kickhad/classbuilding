@@ -73,6 +73,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Reactive.Core">
       <HintPath>..\packages\Probel.Mvvm.2.0.0.123\lib\net45\System.Reactive.Core.dll</HintPath>
     </Reference>
@@ -84,6 +85,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -107,11 +109,18 @@
     <Compile Include="BusinessLogic\zDataType.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Helpers\DataTypes.cs" />
-    <Compile Include="Model\IMaterialDataService.cs" />
-    <Compile Include="Model\ListOfMaterialData.cs" />
-    <Compile Include="Model\MaterialDataService.cs" />
+    <Compile Include="Model\CollectionViewModel.cs" />
+    <Compile Include="Model\CurrentPositionSelectedMaterial\ISelectedCurrentPositionService.cs" />
+    <Compile Include="Model\CurrentPositionSelectedMaterial\ListOfSelectedCurrentPosition.cs" />
+    <Compile Include="Model\CurrentPositionSelectedMaterial\SelectedCurrentPosition.cs" />
+    <Compile Include="Model\CurrentPositionSelectedMaterial\SelectedCurrentPositionDataService.cs" />
+    <Compile Include="Model\MaterialData\IMaterialDataService.cs" />
+    <Compile Include="Model\MaterialData\ListOfMaterialData.cs" />
+    <Compile Include="Model\MaterialData\MaterialDataService.cs" />
     <Compile Include="Model\MaterialData\A-Note.cs" />
-    <Compile Include="Model\MaterialData.cs" />
+    <Compile Include="Model\MaterialData\MaterialData.cs" />
+    <Compile Include="Model\MaterialUsage.cs" />
+    <Compile Include="Model\SelectedMaterial.cs" />
     <Compile Include="PlanningView.xaml.cs">
       <DependentUpon>PlanningView.xaml</DependentUpon>
     </Compile>
@@ -126,6 +135,9 @@
     <Compile Include="Model\MaterialData\IDataService.cs" />
     <Compile Include="SelectedItemData.xaml.cs">
       <DependentUpon>SelectedItemData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleDataLine.xaml.cs">
+      <DependentUpon>SimpleDataLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -150,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectedItemData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SimpleDataLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
