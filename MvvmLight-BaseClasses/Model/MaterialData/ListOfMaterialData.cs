@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace MvvmLight_BaseClasses.Model
 {
    
-    public class ListOfSelectedCurrentPosition
+    public class ListOfMaterialData
     { 
         [JsonProperty("data")]
         public List<MaterialData> Data
@@ -16,16 +16,8 @@ namespace MvvmLight_BaseClasses.Model
             get;
             set;
         }
-        public class MonthlyBucket
-        {
-
-        }
-        [JsonProperty("MonthlyBuckets")]
-        public List<MonthlyBucket> MonthlyBuckets
-        {
-            get;
-            set;
-
-        }
+        
+        
     }
+   
 } 

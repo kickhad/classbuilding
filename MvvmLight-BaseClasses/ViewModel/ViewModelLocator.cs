@@ -53,11 +53,17 @@ namespace MvvmLight_BaseClasses.ViewModel
         public ViewModelLocator()
         {
             IMaterialDataService materialDataService;
-            //ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-            //SimpleIoc.Default.Register<MainViewModel>();
+            ISelectedItemService selectedItemService;
+            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            SimpleIoc.Default.Register<ISelectedItemService, SelectedItemService>();
+            SimpleIoc.Default.Register<IMaterialDataService, MaterialDataService>();        
+            SimpleIoc.Default.Register<MainViewModel>();
+            
             materialDataService = new MaterialDataService();
-            Main = new MainViewModel(materialDataService); //, dialogService, navigationService);
+            selectedItemService = new SelectedItemService(materialDataService);
+            Main = new MainViewModel(materialDataService, selectedItemService); //, dialogService, navigationService);
         }
+    
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

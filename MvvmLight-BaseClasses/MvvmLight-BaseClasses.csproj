@@ -72,6 +72,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Reactive.Core">
@@ -109,35 +110,20 @@
     <Compile Include="BusinessLogic\zDataType.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Helpers\DataTypes.cs" />
+    <Compile Include="Helpers\PullJSONString.cs" />
     <Compile Include="Model\CollectionViewModel.cs" />
-    <Compile Include="Model\CurrentPositionSelectedMaterial\ISelectedCurrentPositionService.cs" />
-    <Compile Include="Model\CurrentPositionSelectedMaterial\ListOfSelectedCurrentPosition.cs" />
-    <Compile Include="Model\CurrentPositionSelectedMaterial\SelectedCurrentPosition.cs" />
-    <Compile Include="Model\CurrentPositionSelectedMaterial\SelectedCurrentPositionDataService.cs" />
     <Compile Include="Model\MaterialData\IMaterialDataService.cs" />
+    <Compile Include="Model\MaterialData\ListOfTinyDataItems.cs" />
     <Compile Include="Model\MaterialData\ListOfMaterialData.cs" />
     <Compile Include="Model\MaterialData\MaterialDataService.cs" />
     <Compile Include="Model\MaterialData\A-Note.cs" />
     <Compile Include="Model\MaterialData\MaterialData.cs" />
+    <Compile Include="Model\MaterialData\MaterialSelected.cs" />
+    <Compile Include="Model\MaterialData\TinyDataItem.cs" />
     <Compile Include="Model\MaterialUsage.cs" />
-    <Compile Include="Model\SelectedMaterial.cs" />
+    <Compile Include="Model\SelectedItemService.cs" />
     <Compile Include="PlanningView.xaml.cs">
       <DependentUpon>PlanningView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Planning\MvvmView1.xaml.cs">
-      <DependentUpon>MvvmView1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Planning\PlanningItem.cs" />
-    <Compile Include="Planning\PlanningItemMonthlyBucket.cs" />
-    <Compile Include="Planning\PlanningItemSnapshot.cs" />
-    <Compile Include="Model\MaterialData\DataItem.cs" />
-    <Compile Include="Model\MaterialData\DataService.cs" />
-    <Compile Include="Model\MaterialData\IDataService.cs" />
-    <Compile Include="SelectedItemData.xaml.cs">
-      <DependentUpon>SelectedItemData.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SimpleDataLine.xaml.cs">
-      <DependentUpon>SimpleDataLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -155,18 +141,6 @@
     </Compile>
     <Page Include="PlanningView.xaml">
       <SubType>Form</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Planning\MvvmView1.xaml">
-      <SubType>Form</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SelectedItemData.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SimpleDataLine.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Skins\MainSkin.xaml">
@@ -196,6 +170,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Cat.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

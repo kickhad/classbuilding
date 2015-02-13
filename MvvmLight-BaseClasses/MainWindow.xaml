@@ -2,15 +2,18 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:b="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.ignore.com"
         xmlns:vm="clr-namespace:MvvmLight_BaseClasses.ViewModel" 
         
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://www.galasoft.ch/mvvmlight" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="MvvmLight_BaseClasses.MainWindow"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:Custom="http://www.galasoft.ch/mvvmlight" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+        x:Class="MvvmLight_BaseClasses.MainWindow"
         mc:Ignorable="d ignore"
         Height="550.657"
         Width="1200.71"
-        Title="MVVM Light Application"
+     
         >
 
     <Window.Resources>
@@ -21,135 +24,94 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
     <Window.DataContext>
         <Binding Path="Main" Source="{StaticResource Locator}"/>
     </Window.DataContext>
 
 
-    <Grid x:Name="LayoutRoot"> 
+    <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*" />                
-                <ColumnDefinition Width="15*" />
-                <ColumnDefinition Width="65*"/>
-            </Grid.ColumnDefinitions>
-      
+            <ColumnDefinition Width="284*" />
+            <ColumnDefinition Width="174*" />
+            <ColumnDefinition Width="359*"/>
+            <ColumnDefinition Width="376*"/>
+        </Grid.ColumnDefinitions>
+
         <Grid.Resources>
+            <SolidColorBrush x:Key="MFS130" Color="#B061A2" Opacity=".4" ></SolidColorBrush>
+            <SolidColorBrush x:Key="MFS140" Color="#3E4289" Opacity=".4" ></SolidColorBrush>
+            <SolidColorBrush x:Key="MFS150" Color="#9B9689" Opacity=".4" ></SolidColorBrush>
+            <SolidColorBrush x:Key="MFS160" Color="#BC3D41" Opacity=".4" ></SolidColorBrush>
+            <SolidColorBrush x:Key="MFS170" Color="#DBBA62" Opacity=".4" ></SolidColorBrush>
+
+            <SolidColorBrush x:Key="MFS180" Color="#A43560" Opacity=".4" ></SolidColorBrush>
+            <SolidColorBrush x:Key="MFS190" Color="#C49DB8" Opacity=".4" ></SolidColorBrush>
+            <SolidColorBrush x:Key="MFS195" Color="#8B655C" Opacity=".4" ></SolidColorBrush>
+            <SolidColorBrush x:Key="MFS191" Color="#345D90" Opacity=".4" ></SolidColorBrush>
+            <SolidColorBrush x:Key="MFS192" Color="#4E563E" Opacity=".4" ></SolidColorBrush>
+
             <Style TargetType="{x:Type ListBoxItem}">
+
                 <Style.Triggers>
-                    <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                        <Setter Property="Background" Value="#19f39611"></Setter>
-                    </Trigger>
-                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                        <Setter Property="Background" Value="#19000000"></Setter>
-                    </Trigger>
+                    <DataTrigger Binding="{Binding MFS}" Value="130">
+                        <Setter Property="Background" Value="{StaticResource ResourceKey=MFS130}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MFS}" Value="140">
+                        <Setter Property="Background" Value="{StaticResource ResourceKey=MFS140}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MFS}" Value="150">
+                        <Setter Property="Background" Value="{StaticResource ResourceKey=MFS150}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MFS}" Value="160">
+                        <Setter Property="Background" Value="{StaticResource ResourceKey=MFS160}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MFS}" Value="170">
+                        <Setter Property="Background" Value="{StaticResource ResourceKey=MFS170}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MFS}" Value="180">
+                        <Setter Property="Background" Value="{StaticResource ResourceKey=MFS180}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MFS}" Value="190">
+                        <Setter Property="Background" Value="{StaticResource ResourceKey=MFS190}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MFS}" Value="191">
+                        <Setter Property="Background" Value="{StaticResource ResourceKey=MFS191}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MFS}" Value="192">
+                        <Setter Property="Background" Value="{StaticResource ResourceKey=MFS192}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MFS}" Value="195">
+                        <Setter Property="Background" Value="{StaticResource ResourceKey=MFS195}" />
+                    </DataTrigger>
                 </Style.Triggers>
             </Style>
         </Grid.Resources>
-
-      
-           
-            <ListBox Grid.Column="0" Margin="5,10,0,0" SelectedItem="{Binding Phrases, Mode=TwoWay}"
-				ItemsSource="{Binding Materials}" AlternationCount="2"
-				ItemTemplate="{StaticResource MaterialsTemplate}"                       
-                     >
-
-            </ListBox>
-        <StackPanel Grid.Column="1" Margin="15,10,0,0">
-            <StackPanel  DataContext="{Binding SelectedMaterial}" Orientation="Vertical" >
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Brand" />
-                    <TextBlock Grid.Column="1" Text="{Binding Brand}" HorizontalAlignment="Right" />
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Shape" />
-                    <TextBlock Grid.Column="1" Text="{Binding Shape}" HorizontalAlignment="Right" />
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Material" />
-                    <TextBlock Grid.Column="1" Text="{Binding ExtMaterial}" HorizontalAlignment="Right" />
-
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Pallet Count" />
-                    <TextBlock Grid.Column="1" Text="{Binding PlCt}" HorizontalAlignment="Right" />
-                </Grid>
-                
-                
-
-                
-                 
-
-                  
-
-            </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="249*"/>
+        </Grid.RowDefinitions>
 
 
-            <StackPanel Margin="0,10,0,0" DataContext="{Binding SelectedMaterial}" Orientation="Vertical">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+        <!-- SIDE BAR-->
 
-                    <TextBlock Grid.Column = "0"  Text="Max Usage" />
-                    <TextBlock Grid.Column="1"  Text="{Binding MaxIn8}" HorizontalAlignment="Right" />
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0" Margin="5,0,0,-12" SelectedItem="{Binding NavSelectedMaterial, Mode=TwoWay}" 
+                 ItemsSource="{Binding Materials}" AlternationCount="2" ItemTemplate="{StaticResource MaterialsTemplate}" Grid.Row="1"   />
 
-                    <TextBlock Grid.Column = "0"  Text="Min Usage" />
-                    <TextBlock Grid.Column="1"  Text="{Binding MinIn8}" HorizontalAlignment="Right" />
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+        <!-- SIDE BAR-->
 
-                    <TextBlock Grid.Column = "0"  Text="Average [3mo]" />
-                    <TextBlock  Grid.Column="1"  Text="{Binding MonthlyAverage3}" HorizontalAlignment="Right"/>
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"  Text="Average [6mo]" />
-                    <TextBlock Grid.Column="1"   Text="{Binding MonthlyAverage6}" HorizontalAlignment="Right" />
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Grid.Column = "0"  Text="Average [12mo]" />
-                    <TextBlock  Grid.Column="1" Text="{Binding MonthlyAverage12}" HorizontalAlignment="Right" />
-                </Grid>
-            </StackPanel>
-
-
+        <StackPanel Grid.Column="1" Margin="5,3,10,-15" Grid.Row="1">
+            <TextBlock Text="Then Data Rows" Margin="0,0,-27,0" />
+            <ListBox ItemsSource="{Binding SelectedMaterial.Materials}" ItemTemplate="{StaticResource DetailedMaterial}" />
+            
+        </StackPanel>
+        <StackPanel Grid.Column="2" Orientation="Vertical" Grid.Row="1" >
+            <DataGrid ItemsSource="{Binding SelectedMaterial.Transits}"   Margin="0,20,27,0" />
+            <DataGrid ItemsSource="{Binding SelectedMaterial.Inventorys}"   Margin="0,20,27,0"/>
+            <DataGrid ItemsSource="{Binding SelectedMaterial.OrderChanges}"  Margin="0,20,27,0"/>
+            <DataGrid ItemsSource="{Binding SelectedMaterial.Incomings}"   Margin="0,20,27,0"/>
+            <DataGrid ItemsSource="{Binding SelectedMaterial.Forecasts}"   Margin="0,20,27,0"/>
 
         </StackPanel>
+
     </Grid>
 </Window>
