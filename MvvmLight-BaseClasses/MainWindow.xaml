@@ -95,7 +95,7 @@
         <!-- SIDE BAR-->
 
         <ListBox Grid.Column="0" Margin="5,0,0,-12" SelectedItem="{Binding NavSelectedMaterial, Mode=TwoWay}" 
-                 ItemsSource="{Binding Materials}" AlternationCount="2" ItemTemplate="{StaticResource MaterialsTemplate}" Grid.Row="1"   />
+                 ItemsSource="{Binding SideBarMaterials}" AlternationCount="2" ItemTemplate="{StaticResource MaterialsTemplate}" Grid.Row="1"   />
 
         <!-- SIDE BAR-->
 
@@ -105,11 +105,209 @@
             
         </StackPanel>
         <StackPanel Grid.Column="2" Orientation="Vertical" Grid.Row="1" >
-            <DataGrid ItemsSource="{Binding SelectedMaterial.Transits}"   Margin="0,20,27,0" />
-            <DataGrid ItemsSource="{Binding SelectedMaterial.Inventorys}"   Margin="0,20,27,0"/>
-            <DataGrid ItemsSource="{Binding SelectedMaterial.OrderChanges}"  Margin="0,20,27,0"/>
-            <DataGrid ItemsSource="{Binding SelectedMaterial.Incomings}"   Margin="0,20,27,0"/>
-            <DataGrid ItemsSource="{Binding SelectedMaterial.Forecasts}"   Margin="0,20,27,0"/>
+            <StackPanel Orientation="Vertical" >
+                <TextBlock Text="Transit" MinWidth="50" />
+
+                <HeaderedItemsControl ItemsSource="{Binding SelectedMaterial.Transits}" Margin="0,10,0,0">
+                <HeaderedItemsControl.Template>
+                    <ControlTemplate TargetType="HeaderedItemsControl">
+                        <StackPanel>
+                            <ContentPresenter ContentSource="Header" />
+                            <ItemsPresenter  />
+                        </StackPanel>
+                    </ControlTemplate>
+                </HeaderedItemsControl.Template>
+                <HeaderedItemsControl.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition SharedSizeGroup="A" />
+                            <ColumnDefinition SharedSizeGroup="B" />
+                            <ColumnDefinition SharedSizeGroup="C" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Material" />
+                        <TextBlock Grid.Column="1" Text="Month" />
+                        <TextBlock Grid.Column="2" Text="Qty" />
+                    </Grid>
+                </HeaderedItemsControl.Header>
+                <HeaderedItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="A" />
+                                <ColumnDefinition SharedSizeGroup="B" />
+                                <ColumnDefinition SharedSizeGroup="C" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Material}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Path=Month, StringFormat='{}{0:MMM-yyyy}'}" />
+                            <TextBlock Grid.Column="2" Text="{Binding Path=Qty, StringFormat='{}{0:#,###.}'}"  />                            
+                        </Grid>
+                    </DataTemplate>
+                </HeaderedItemsControl.ItemTemplate>
+                </HeaderedItemsControl>
+                
+                <TextBlock Text="Inventories" MinWidth="50" />
+                <HeaderedItemsControl ItemsSource="{Binding SelectedMaterial.Inventorys}" Margin="0,10,0,0">
+                    
+                    <HeaderedItemsControl.Template>
+                        <ControlTemplate TargetType="HeaderedItemsControl">
+                            <StackPanel>
+                                <ContentPresenter ContentSource="Header" />
+                                <ItemsPresenter  />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </HeaderedItemsControl.Template>
+                    <HeaderedItemsControl.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="A" />
+                                <ColumnDefinition SharedSizeGroup="B" />
+                                <ColumnDefinition SharedSizeGroup="C" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Material" />
+                            <TextBlock Grid.Column="1" Text="Location" />
+                            <TextBlock Grid.Column="2" Text="Qty" />
+                        </Grid>
+                    </HeaderedItemsControl.Header>
+                    <HeaderedItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition SharedSizeGroup="A" />
+                                    <ColumnDefinition SharedSizeGroup="B" />
+                                    <ColumnDefinition SharedSizeGroup="C" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Material}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Warehouse}" />
+                                <TextBlock Grid.Column="2" Text="{Binding Path=Qty,  StringFormat='{}{0:#,###.}'}"  />
+                            </Grid>
+                        </DataTemplate>
+                    </HeaderedItemsControl.ItemTemplate>
+                </HeaderedItemsControl>
+                
+                <TextBlock Text="Forecast" MinWidth="50" Margin="0,10,0,0" />
+                <HeaderedItemsControl ItemsSource="{Binding SelectedMaterial.Forecasts}"  >
+                    <HeaderedItemsControl.Template>
+                        <ControlTemplate TargetType="HeaderedItemsControl">
+                            <StackPanel>
+                                <ContentPresenter ContentSource="Header" />
+                                <ItemsPresenter  />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </HeaderedItemsControl.Template>
+                    <HeaderedItemsControl.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="A" />
+                                <ColumnDefinition SharedSizeGroup="B" />
+                                <ColumnDefinition SharedSizeGroup="C" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Material" />
+                            <TextBlock Grid.Column="1" Text="Month" />
+                            <TextBlock Grid.Column="2" Text="Qty" />
+                        </Grid>
+                    </HeaderedItemsControl.Header>
+                    <HeaderedItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition SharedSizeGroup="A" />
+                                    <ColumnDefinition SharedSizeGroup="B" />
+                                    <ColumnDefinition SharedSizeGroup="C" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Material}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Path=Month, StringFormat='{}{0:MMM-yyyy}'}" />
+                                <TextBlock Grid.Column="2" Text="{Binding Path=Qty, StringFormat='{}{0:#,###.}'}"  />
+                            </Grid>
+                        </DataTemplate>
+                    </HeaderedItemsControl.ItemTemplate>
+                </HeaderedItemsControl>
+
+                <TextBlock Text="Changes" MinWidth="50" Margin="0,10,0,0" />
+                <HeaderedItemsControl ItemsSource="{Binding SelectedMaterial.OrderChanges}"  >
+                    <HeaderedItemsControl.Template>
+                        <ControlTemplate TargetType="HeaderedItemsControl">
+                            <StackPanel>
+                                <ContentPresenter ContentSource="Header" />
+                                <ItemsPresenter  />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </HeaderedItemsControl.Template>
+                    <HeaderedItemsControl.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="A" />
+                                <ColumnDefinition SharedSizeGroup="B" />
+                                <ColumnDefinition SharedSizeGroup="C" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Material" />
+                            <TextBlock Grid.Column="1" Text="Month" />
+                            <TextBlock Grid.Column="2" Text="Qty" />
+                        </Grid>
+                    </HeaderedItemsControl.Header>
+                    <HeaderedItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition SharedSizeGroup="A" />
+                                    <ColumnDefinition SharedSizeGroup="B" />
+                                    <ColumnDefinition SharedSizeGroup="C" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Material}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Path=Month, StringFormat='{}{0:MMM-yyyy}'}" />
+                                <TextBlock Grid.Column="2" Text="{Binding Path=Qty, StringFormat='{}{0:#,###.}'}"  />
+                            </Grid>
+                        </DataTemplate>
+                    </HeaderedItemsControl.ItemTemplate>
+                </HeaderedItemsControl>
+
+                <TextBlock Text="Incomings" MinWidth="50" Margin="0,10,0,0" />
+
+                <HeaderedItemsControl ItemsSource="{Binding SelectedMaterial.Incomings}" >
+                    <HeaderedItemsControl.Template>
+                        <ControlTemplate TargetType="HeaderedItemsControl">
+                            <StackPanel>
+                                <ContentPresenter ContentSource="Header" />
+                                <ItemsPresenter  />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </HeaderedItemsControl.Template>
+                    <HeaderedItemsControl.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="A" />
+                                <ColumnDefinition SharedSizeGroup="B" />
+                                <ColumnDefinition SharedSizeGroup="C" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Material" />
+                            <TextBlock Grid.Column="1" Text="Month" />
+                            <TextBlock Grid.Column="2" Text="Qty" />
+                        </Grid>
+                    </HeaderedItemsControl.Header>
+                    <HeaderedItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition SharedSizeGroup="A" />
+                                    <ColumnDefinition SharedSizeGroup="B" />
+                                    <ColumnDefinition SharedSizeGroup="C" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Material}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Path=Month, StringFormat='{}{0:MMM-yyyy}'}" />
+                                <TextBlock Grid.Column="2" Text="{Binding Path=Qty, StringFormat='{}{0:#,###.}'}"  />
+                            </Grid>
+                        </DataTemplate>
+                    </HeaderedItemsControl.ItemTemplate>
+                </HeaderedItemsControl>
+
+            </StackPanel>
+            
+
+
+            
+            
+            <!--<DataGrid ItemsSource="{Binding SelectedMaterial.OrderChanges}"  Margin="0,20,0,0" HorizontalAlignment="Left" Width="332"/>
+            <DataGrid ItemsSource="{Binding SelectedMaterial.Incomings}"   Margin="0,20,0,0" HorizontalAlignment="Left" Width="332"/>
+            <DataGrid ItemsSource="{Binding SelectedMaterial.Forecasts}"   Margin="0,20,0,0" HorizontalAlignment="Left" Width="332"/>-->
 
         </StackPanel>
 

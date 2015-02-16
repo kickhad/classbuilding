@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System;
 namespace MvvmLight_BaseClasses.Model
 {
     /// <summary>
@@ -17,6 +18,19 @@ namespace MvvmLight_BaseClasses.Model
 
         [JsonProperty]
         public int Warehouse { get; set; }
+
+        public DateTime Month
+        {
+            get
+            {
+                return DateTime.Now.AddMonths(this.Offset);
+            }
+            set
+            {
+                int x = new int();
+                x = 1;
+            }
+        }
 
         [JsonProperty]
         public int Offset { get; set; }
@@ -82,13 +96,22 @@ namespace MvvmLight_BaseClasses.Model
     {
         /// <summary>
         /// Initializes a new instance of the MonthlyBucketTinySet class.
-        /// </summary>
-
+        /// </summary>        
 
         [JsonProperty] int Material { get; set; }
-        int Offset { get; set; }
-        int Qty { get; set; }
-
+        public int Offset { get; set; }
+        public int Qty { get; set; }
+        public DateTime Month
+        {
+            get            
+            {                
+                return DateTime.Now.AddMonths(this.Offset);
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
         
     }
 }

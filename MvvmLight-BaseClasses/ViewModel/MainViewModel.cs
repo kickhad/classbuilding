@@ -26,6 +26,7 @@ namespace MvvmLight_BaseClasses.ViewModel
             _materialDataService = materialDataService;
             _selectedItem = SelectedItemService;
             Materials = new ObservableCollection<MaterialData>();
+            SideBarMaterials = new ObservableCollection<MaterialData>();
             
             
                 
@@ -49,7 +50,8 @@ namespace MvvmLight_BaseClasses.ViewModel
                 ms.Transits.Add(tr);
 
                 inv = new Inventory(); 
-                inv.Qty = 6000; inv.Material = 8214517; inv.Warehouse = 4911;
+                inv.Qty = 6000; inv.Material = 8214517; 
+                inv.Warehouse = 4911;
                 ms.Inventorys.Add(inv);
                 inv = new Inventory(); 
                 inv.Qty = 18000; inv.Material = 8214517; inv.Warehouse = 4901;
@@ -99,6 +101,11 @@ namespace MvvmLight_BaseClasses.ViewModel
         }
         
         public ObservableCollection<MaterialData> Materials
+        {
+            get;
+            private set;
+        }
+        public ObservableCollection<MaterialData> SideBarMaterials
         {
             get;
             private set;
@@ -192,7 +199,12 @@ namespace MvvmLight_BaseClasses.ViewModel
             foreach (var material in materials)
             {
                 Materials.Add(material);
+                if(material.RefMaterial == material.Material)
+                {
+                    SideBarMaterials.Add(material);
+                }
             }
+
         }        
         #endregion Begin        
     }
