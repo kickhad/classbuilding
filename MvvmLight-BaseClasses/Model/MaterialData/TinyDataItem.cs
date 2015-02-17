@@ -27,8 +27,8 @@ namespace MvvmLight_BaseClasses.Model
             }
             set
             {
-                int x = new int();
-                x = 1;
+                // int x = new int();
+                int x = 1;
             }
         }
 
@@ -38,8 +38,9 @@ namespace MvvmLight_BaseClasses.Model
         [JsonProperty]
         public int Qty { get; set; }
     }
-    public class Forecast : TinyDataItem
-{
+    public class Forecast : ObservableObject
+    {
+
         [JsonProperty]
         public int Material{get;set;} 
 
@@ -47,11 +48,23 @@ namespace MvvmLight_BaseClasses.Model
         public int Offset{get;set;}
 
         [JsonProperty]
-        public int Qty;
+        public int Qty{get;set;}
 
+        public DateTime Month
+        {
+            get
+            {
+                return DateTime.Now.AddMonths(this.Offset);
+            }
+            set
+            {
+                int x = new int();
+                x = 1;
+            }
+        }
 
     }    
-    public class Incoming : TinyDataItem
+    public class Incoming : ObservableObject
 
     {
         [JsonProperty]
@@ -61,9 +74,20 @@ namespace MvvmLight_BaseClasses.Model
         public int Offset{get;set;}
 
         [JsonProperty]
-        public int Qty;
+        public int Qty { get; set; }
 
-
+        public DateTime Month
+        {
+            get
+            {
+                return DateTime.Now.AddMonths(this.Offset);
+            }
+            set
+            {
+                int x = new int();
+                x = 1;
+            }
+        }
     }
     public class Inventory : ObservableObject
     {
@@ -74,23 +98,35 @@ namespace MvvmLight_BaseClasses.Model
         public int Warehouse { get; set; }
 
         [JsonProperty]
-        public int Qty;
+        public int Qty { get; set; }
 
 
     }
-    public class OrderChange : TinyDataItem
+    public class OrderChange : ObservableObject
         
     {
         [JsonProperty]
-        public int Material{get;set;} 
+        public int Material{get;set;}        
 
         [JsonProperty]
         public int Offset{get;set;}
 
         [JsonProperty]
-        public int Qty;
+        public int Qty { get; set; }
 
-
+        //removeable on rollout
+        public DateTime Month
+        {
+            get
+            {
+                return DateTime.Now.AddMonths(this.Offset);
+            }
+            set
+            {
+                int x = new int();
+                x = 1;
+            }
+        }
     }
     public class TinyDataItem : ObservableObject
     {

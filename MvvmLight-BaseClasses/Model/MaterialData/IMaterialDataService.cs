@@ -16,6 +16,7 @@ namespace MvvmLight_BaseClasses.Model
         Task<List<Inventory>> PullInventorys();
         Task<List<OrderChange>> PullOrderChanges();
         Task<List<Transit>> PullTransits();
+        Task<List<MaterialUsage>> PullUsages();
      
         
     }

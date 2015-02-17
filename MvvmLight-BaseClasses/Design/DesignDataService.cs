@@ -10,13 +10,16 @@ namespace MvvmLight_BaseClasses.Design
 {
     public class DesignDataService : IMaterialDataService
     {
+#pragma warning disable 1998
         public async Task<MaterialSelected> SelectItem()
         {
             return null;
         }
 
-
-
+        public async Task<List<MaterialUsage>> PullUsages()
+        {
+            return null;
+        }
 
         public Task<List<Forecast>> PullForecasts()
         {
@@ -660,6 +663,6 @@ namespace MvvmLight_BaseClasses.Design
             var result = JsonConvert.DeserializeObject<ListOfMaterialData>(json);
             return result.Data;
         }
-
+#pragma warning disable 1998
     }
 }

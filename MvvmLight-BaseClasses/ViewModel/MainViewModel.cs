@@ -36,7 +36,8 @@ namespace MvvmLight_BaseClasses.ViewModel
 #if DEBUG
             if (IsInDesignMode)
             {
-                Begin();
+#pragma warning disable 1998
+                Task.Run(() => Begin());
                 MaterialSelected ms = new MaterialSelected();
                 Transit tr = new Transit(); 
                 Inventory inv = new Inventory(); 
@@ -68,9 +69,9 @@ namespace MvvmLight_BaseClasses.ViewModel
                 ms.OrderChanges.Add(oc);
                 
                 SelectedMaterial = ms;
-              
 
-                
+#pragma warning disable 1998
+
 
 
             }

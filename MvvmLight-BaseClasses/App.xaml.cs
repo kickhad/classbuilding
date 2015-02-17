@@ -14,11 +14,7 @@ namespace MvvmLight_BaseClasses
         //    get;
         //    private set;
         //}
-        public static MaterialData SelectedMaterial
-        {
-            get;
-            set;
-        }
+       
         static App()
         {
             DispatcherHelper.Initialize();

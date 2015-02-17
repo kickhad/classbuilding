@@ -6,11 +6,20 @@
                     xmlns:local="clr-namespace:MvvmLight_BaseClasses"
                     mc:Ignorable="d">
 
+    <Style TargetType="TextBlock">                
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
 
-    
-    <DataTemplate  x:Key="MaterialsTemplate">
+    <Style BasedOn="{StaticResource {x:Type TextBlock}}"
+       TargetType="TextBlock"
+       x:Key="TitleText">
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+
+    <DataTemplate x:Key="MaterialsTemplate">
         
         <StackPanel Orientation="Vertical">
+            
             <StackPanel Orientation="Horizontal">
             	
                 <TextBlock Text="{Binding MFS}"  />
