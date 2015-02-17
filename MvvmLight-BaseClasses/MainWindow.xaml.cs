@@ -21,7 +21,8 @@ namespace MvvmLight_BaseClasses
         {
             InitializeComponent();
             var vm = (MainViewModel)DataContext;
-            vm.RefreshCommand.Execute(null);
+            vm.BeginCommand.Execute(null);
+            
             
  //4           Closing += (s, e) => ViewModelLocator.Cleanup();
             
@@ -30,11 +31,18 @@ namespace MvvmLight_BaseClasses
         private async void RefreshClick(object sender, EventArgs e)
         {
             var vm = (MainViewModel)DataContext;            
-            vm.RefreshCommand.Execute(null);
+            vm.BeginCommand.Execute(null);
+           
         }
-         
 
-     
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+      
+
+       
         //private void SelectMaterialCommand(object sender, EventArgs s)
         //{
         //    var vm = (MainViewModel)DataContext;

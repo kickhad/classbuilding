@@ -3,27 +3,55 @@
                     xmlns:b="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:local="clr-namespace:MvvmLight_BaseClasses"
                     mc:Ignorable="d">
 
+    <Style TargetType="TextBlock">                
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
 
-    
-    <DataTemplate  x:Key="MaterialsTemplate">
+    <Style BasedOn="{StaticResource {x:Type TextBlock}}"
+       TargetType="TextBlock"
+       x:Key="TitleText">
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+
+    <DataTemplate x:Key="MaterialsTemplate">
+        
         <StackPanel Orientation="Vertical">
+            
             <StackPanel Orientation="Horizontal">
+            	
                 <TextBlock Text="{Binding MFS}"  />
-        <TextBlock Text=" - " />
-        <TextBlock Text="{Binding ExtMaterial}" />
+                <TextBlock Text=" - " />
+                <TextBlock Text="{Binding ExtMaterial}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding Brand}" />
-        <TextBlock Text=" - " />
-        <TextBlock Text="{Binding Shape}"  />
+                <TextBlock Text=" - " />
+                <TextBlock Text="{Binding Shape}"  />
             </StackPanel>
         </StackPanel>
-        
-                     
-                    </DataTemplate>
+    </DataTemplate>
+    <DataTemplate x:Key="DetailedMaterial" >
+		<Grid>
+    		<Grid.RowDefinitions>
+    			<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<StackPanel Orientation="Vertical" Grid.Row="0">
+			<TextBlock Text="{Binding Brand}" />
+			<TextBlock Text="{Binding Shape}" Margin="5,0,0,0" />
+			<TextBlock Text="{Binding ExtMaterial}" Margin="5,0,0,0" />
+			</StackPanel>
+			<StackPanel Orientation="Horizontal"	 Grid.Row="1">
+				<CheckBox Content="Active" />
+				<CheckBox Content="Include" Margin="5,0,0,0" />
+
+			</StackPanel>
+		</Grid>
+    </DataTemplate>
    
 
 
-</ResourceDictionary>
+</ResourceDictionary>    

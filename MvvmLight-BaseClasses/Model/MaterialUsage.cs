@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace MvvmLight_BaseClasses.Model
 {
-    class MaterialUsage : ObservableObject
+    public class MaterialUsage : ObservableObject
     {
         [JsonProperty]
         public int MaxIn8
@@ -25,14 +25,19 @@ namespace MvvmLight_BaseClasses.Model
             //   get { return 90; }
             // set { throw new NotImplementedException(); }        
         }
+        [JsonProperty]
+        public int OpenDelivery
+        { get; set; }
+
+        [JsonProperty]
+        public int BackLogs
+        { get; set; }
 
         [JsonProperty]
         public double MonthlyAverage3
         {
             get;
-            set;
-            //get { return 239.443; }
-            //set { throw new NotImplementedException(); }
+            set;            
         }
 
         [JsonProperty]
