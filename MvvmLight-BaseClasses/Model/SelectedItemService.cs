@@ -19,13 +19,9 @@ namespace MvvmLight_BaseClasses.Model
         private IMaterialDataService _materialDataService;
         public SelectedItemService(IMaterialDataService materialDataService)
         {
-#pragma warning disable 1998
+
             _materialDataService = materialDataService;
             Forecasts = new List<Forecast>();
-            //Incomings = new List<Incoming>();
-            //OrderChanges = new List<OrderChange>();
-            //Transits = new List<Transit>();
-            //Inventorys = new List<Inventory>();
             Task.Run(() => PullForecasts());
             Task.Run(() => PullIncomings());
             Task.Run(() => PullInventorys());
@@ -33,12 +29,7 @@ namespace MvvmLight_BaseClasses.Model
             Task.Run(()=> PullTransits());
             Task.Run(() => PullUsages());
 
-            //PullForecasts();
-           // PullIncomings();
-           // PullInventorys();
-          //  PullOrderChanges();
-         //   PullTransits();
-#pragma warning disable 1998
+
 
 
         }
@@ -50,9 +41,12 @@ namespace MvvmLight_BaseClasses.Model
         {
             List<MaterialSelected> _selectItem = new List<MaterialSelected>();
             _selectItem.Add(new MaterialSelected());            
+            
+            
             foreach(int i in refmats)                        
             
             {
+                //materialusage
                 
                 if (_Forecasts != null)
                 { _selectItem[0].Forecasts.AddRange(_Forecasts.Where(fc => fc.Material == i)); }

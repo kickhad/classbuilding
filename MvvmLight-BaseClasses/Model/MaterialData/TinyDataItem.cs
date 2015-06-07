@@ -25,11 +25,11 @@ namespace MvvmLight_BaseClasses.Model
             {
                 return DateTime.Now.AddMonths(this.Offset);
             }
-            set
-            {
-                // int x = new int();
-                int x = 1;
-            }
+            //set
+            //{
+            //    // int x = new int();
+            //    int x = 1;
+            //}
         }
 
         [JsonProperty]
@@ -56,11 +56,11 @@ namespace MvvmLight_BaseClasses.Model
             {
                 return DateTime.Now.AddMonths(this.Offset);
             }
-            set
-            {
-                int x = new int();
-                x = 1;
-            }
+            //set
+            //{
+            //    int x = new int();
+            //    x = 1;
+            //}
         }
 
     }    
@@ -82,11 +82,11 @@ namespace MvvmLight_BaseClasses.Model
             {
                 return DateTime.Now.AddMonths(this.Offset);
             }
-            set
-            {
-                int x = new int();
-                x = 1;
-            }
+            //set
+            //{
+            //    int x = new int();
+            //    x = 1;
+            //}
         }
     }
     public class Inventory : ObservableObject
@@ -121,11 +121,11 @@ namespace MvvmLight_BaseClasses.Model
             {
                 return DateTime.Now.AddMonths(this.Offset);
             }
-            set
-            {
-                int x = new int();
-                x = 1;
-            }
+            //set
+            //{
+            //    int x = new int();
+            //    x = 1;
+            //}
         }
     }
     public class TinyDataItem : ObservableObject

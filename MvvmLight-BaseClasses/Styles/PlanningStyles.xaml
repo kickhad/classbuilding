@@ -6,8 +6,9 @@
                     xmlns:local="clr-namespace:MvvmLight_BaseClasses"
                     mc:Ignorable="d">
 
-    <Style TargetType="TextBlock">                
+    <Style x:Key="MenuFont" TargetType="TextBlock">                
         <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
 
     <Style BasedOn="{StaticResource {x:Type TextBlock}}"
@@ -16,26 +17,28 @@
         <Setter Property="FontSize" Value="13"/>
     </Style>
 
-    <DataTemplate x:Key="MaterialsTemplate">
-        
+                
+    <DataTemplate  x:Key="MaterialsTemplate">
         <StackPanel Orientation="Vertical">
-            
-            <StackPanel Orientation="Horizontal">
-            	
-                <TextBlock Text="{Binding MFS}"  />
-                <TextBlock Text=" - " />
-                <TextBlock Text="{Binding ExtMaterial}" />
+            <StackPanel  Grid.Row="0" Orientation="Horizontal">
+
+                <TextBlock Style="{StaticResource MenuFont}" Text="{Binding MFS}"  />
+                <TextBlock Style="{StaticResource MenuFont}"  Text=" - " />
+                <TextBlock Style="{StaticResource MenuFont}" Text="{Binding ExtMaterial}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Brand}" />
-                <TextBlock Text=" - " />
-                <TextBlock Text="{Binding Shape}"  />
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource MenuFont}" Text="{Binding Brand}" />
+                <TextBlock Style="{StaticResource MenuFont}" Text=" - " />
+                <TextBlock Style="{StaticResource MenuFont}" Text="{Binding Shape}"  />
             </StackPanel>
+
         </StackPanel>
+
     </DataTemplate>
     <DataTemplate x:Key="DetailedMaterial" >
 		<Grid>
-    		<Grid.RowDefinitions>
+      
+            <Grid.RowDefinitions>
     			<RowDefinition />
 				<RowDefinition />
 			</Grid.RowDefinitions>

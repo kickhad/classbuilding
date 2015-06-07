@@ -636,26 +636,6 @@ namespace MvvmLight_BaseClasses.Design
          ""Shape"" : ""SU645"",
          ""TextLine"" : ""BarrelBrick"",
          ""UOM"" : ""PC""
-      },
-      {
-         ""Amount"" : 790.0,
-         ""BaseUnit"" : ""KG"",
-         ""Brand"" : ""DID-A94-6-CD"",
-         ""CustomerMaterial"" : ""61/7251-0046"",
-         ""ExtMaterial"" : 8220873,
-         ""MFS"" : 150,
-         ""Material"" : 8220873,
-         ""MonthlyBuckets"" : [],
-         ""PackKey"" : ""A902"",
-         ""PcWt"" : 1,
-         ""PlCt"" : 3,
-         ""Plant"" : 41,
-         ""Predecessor"" : """",
-         ""ProdHier."" : """",
-         ""SalesUnit"" : ""KG"",
-         ""Shape"" : ""454KGBBXP02A902"",
-         ""TextLine"" : ""NoSpout"",
-         ""UOM"" : ""KG""
       }
    ]
 }

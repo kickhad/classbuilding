@@ -6,13 +6,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.ignore.com"
         xmlns:vm="clr-namespace:MvvmLight_BaseClasses.ViewModel" 
-        
+        xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         xmlns:Custom="http://www.galasoft.ch/mvvmlight" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
         x:Class="MvvmLight_BaseClasses.MainWindow"
         mc:Ignorable="d ignore"
         Height="550.657"
-        Width="1200.71"
+        Width="1200.71" Background="GhostWhite"
      
         >
 
@@ -24,6 +24,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+
+
     <Window.DataContext>
         <Binding Path="Main" Source="{StaticResource Locator}"/>
     </Window.DataContext>
@@ -31,28 +33,65 @@
 
     <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="284*" />
-            <ColumnDefinition Width="174*" />
-            <ColumnDefinition Width="284*"/>
-            <ColumnDefinition Width="451*"/>
+            <ColumnDefinition Width="236*" />
+            <ColumnDefinition Width="142*" />
+            <ColumnDefinition Width="644*"/>
+            <ColumnDefinition Width="171*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.Resources>
-            <SolidColorBrush x:Key="MFS140" Color="#3E4289" Opacity=".4" ></SolidColorBrush>
-            <SolidColorBrush x:Key="MFS150" Color="#9B9689" Opacity=".4" ></SolidColorBrush>
-            <SolidColorBrush x:Key="MFS160" Color="#BC3D41" Opacity=".4" ></SolidColorBrush>
-            <SolidColorBrush x:Key="MFS170" Color="#DBBA62" Opacity=".4" ></SolidColorBrush>
+            <SolidColorBrush  x:Key="MFS130">
+                <SolidColorBrush.Color>
+                    <Color A="150" R="13" G="13" B="152" />
 
-            <SolidColorBrush x:Key="MFS180" Color="#A43560" Opacity=".4" ></SolidColorBrush>
-            <SolidColorBrush x:Key="MFS190" Color="#C49DB8" Opacity=".4" ></SolidColorBrush>
-            <SolidColorBrush x:Key="MFS195" Color="#8B655C" Opacity=".4" ></SolidColorBrush>
-            <SolidColorBrush x:Key="MFS191" Color="#345D90" Opacity=".4" ></SolidColorBrush>
-            <SolidColorBrush x:Key="MFS192" Color="#4E563E" Opacity=".4" ></SolidColorBrush>
+                </SolidColorBrush.Color>
 
-
-
-            <SolidColorBrush x:Key="MFS130" Color="#B061A2" Opacity=".4" ></SolidColorBrush>
-
+            </SolidColorBrush>
+            <SolidColorBrush x:Key="MFS140">
+                <SolidColorBrush.Color>
+                    <Color A="200" R="17" G="13" B="112" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+            <SolidColorBrush x:Key="MFS150">
+                <SolidColorBrush.Color>
+                    <Color A="140" R="17" G="13" B="112" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+            <SolidColorBrush x:Key="MFS160">
+                <SolidColorBrush.Color>
+                    <Color A="100" R="17" G="13" B="112" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+            <SolidColorBrush x:Key="MFS170">
+                <SolidColorBrush.Color>
+                    <Color A="100" R="17" G="13" B="112" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+            <SolidColorBrush x:Key="MFS180">
+                <SolidColorBrush.Color>
+                    <Color A="075" R="17" G="13" B="112" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+            <SolidColorBrush x:Key="MFS190">
+                <SolidColorBrush.Color>
+                    <Color A="040" R="17" G="13" B="112" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+            <SolidColorBrush x:Key="MFS191">
+                <SolidColorBrush.Color>
+                    <Color A="040" R="17" G="13" B="112" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+            <SolidColorBrush x:Key="MFS192">
+                <SolidColorBrush.Color>
+                    <Color A="040" R="17" G="13" B="112" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+            <SolidColorBrush x:Key="MFS195">
+                <SolidColorBrush.Color>
+                    <Color A="030" R="17" G="13" B="112" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
             <Style TargetType="{x:Type ListBoxItem}">
 
                 <Style.Triggers>
@@ -91,111 +130,147 @@
 
         </Grid.Resources>
         <Grid.RowDefinitions>
-            <RowDefinition Height="11*"/>
-            <RowDefinition Height="249*"/>
+            <RowDefinition Height="22*"/>
+            <RowDefinition Height="373*"/>
+            <RowDefinition Height="125*"/>
         </Grid.RowDefinitions>
-
+        <Grid Grid.Row="1" Grid.Column="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <oxy:Plot Model="{Binding plm}" Margin="0,18,0,-18"  />
+        </Grid>
 
         <!-- SIDE BAR-->
 
-        <ListBox  Grid.Column="0" Margin="5,0,0,-12" SelectedItem="{Binding NavSelectedMaterial, Mode=TwoWay}" 
-                 ItemsSource="{Binding SideBarMaterials}" ItemTemplate="{StaticResource MaterialsTemplate}" Grid.Row="1"   />
+        <ListBox  Grid.Column="0" Margin="0,0,5,0"  SelectedItem="{Binding NavSelectedMaterial, Mode=TwoWay}" 
+        ItemsSource="{Binding SideBarMaterials}" ItemTemplate="{StaticResource MaterialsTemplate}" Grid.Row="1" Grid.RowSpan="2"   />
         <!-- SIDE BAR-->
 
-        <StackPanel Grid.Column="1" Margin="5,3,10,-15" Grid.Row="1">
+        <StackPanel Grid.Row="1" Grid.Column="1">
+
+
             <ListBox ItemsSource="{Binding SelectedMaterial.Materials}" ItemTemplate="{StaticResource DetailedMaterial}" />
 
         </StackPanel>
-        <StackPanel Grid.Column="2" Orientation="Vertical" Grid.Row="1" >
-            <StackPanel Orientation="Vertical" >                
-                <HeaderedItemsControl ItemsSource="{Binding SelectedMaterial.Transits}" Margin="0,10,0,0">
-                    <HeaderedItemsControl.Template>
-                        <ControlTemplate TargetType="HeaderedItemsControl">
-                            <StackPanel>
-                                <ContentPresenter ContentSource="Header" />
-                                <ItemsPresenter  />
-                            </StackPanel>
-                        </ControlTemplate>
-                    </HeaderedItemsControl.Template>
-                    <HeaderedItemsControl.Header>
+        <StackPanel Grid.Column="2" HorizontalAlignment="Center"  Orientation="Horizontal" Grid.Row="2"   >
+
+            <HeaderedItemsControl Width="Auto" ItemsSource="{Binding SelectedMaterial.Transits}" Margin="0,10,0,0">
+                <HeaderedItemsControl.Template>
+                    <ControlTemplate TargetType="HeaderedItemsControl">
+                        <StackPanel>
+                            <ContentPresenter ContentSource="Header" />
+                            <ItemsPresenter  />
+                        </StackPanel>
+                    </ControlTemplate>
+                </HeaderedItemsControl.Template>
+                <HeaderedItemsControl.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition SharedSizeGroup="A" />
+                            <ColumnDefinition SharedSizeGroup="B" />
+                            <ColumnDefinition SharedSizeGroup="C" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" TextAlignment="Center"  Style="{StaticResource TitleText}" Text="Tranits" MinWidth="50" Margin="0,10,0,0" />
+                        <!--<TextBlock Grid.Column="0" Grid.Row="1" Text="Material" MinWidth="30"/>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Text="Month" />
+                            <TextBlock Grid.Column="2" Grid.Row="1" Text="Qty" />-->
+                    </Grid>
+                </HeaderedItemsControl.Header>
+                <HeaderedItemsControl.ItemTemplate>
+                    <DataTemplate>
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition SharedSizeGroup="A" />
                                 <ColumnDefinition SharedSizeGroup="B" />
                                 <ColumnDefinition SharedSizeGroup="C" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource TitleText}" Text="Tranits" MinWidth="50" Margin="0,10,0,0" />
-                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Material" />
-                            <TextBlock Grid.Column="1" Grid.Row="1" Text="Month" />
-                            <TextBlock Grid.Column="2" Grid.Row="1" Text="Qty" />
+                            <TextBlock Margin="0,0,15,0" Grid.Column="0" Text="{Binding Material}" />
+                            <TextBlock Margin="0,0,15,0" Grid.Column="1" Text="{Binding Path=Month, StringFormat='{}{0:MMM-yyyy}'}" />
+                            <TextBlock Margin="0,0,15,0" Grid.Column="2" Text="{Binding Path=Qty, StringFormat='{}{0:#,###.}'}"  />
                         </Grid>
-                    </HeaderedItemsControl.Header>
-                    <HeaderedItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition SharedSizeGroup="A" />
-                                    <ColumnDefinition SharedSizeGroup="B" />
-                                    <ColumnDefinition SharedSizeGroup="C" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Material}" />
-                                <TextBlock Grid.Column="1" Text="{Binding Path=Month, StringFormat='{}{0:MMM-yyyy}'}" />
-                                <TextBlock Grid.Column="2" Text="{Binding Path=Qty, StringFormat='{}{0:#,###.}'}"  />
-                            </Grid>
-                        </DataTemplate>
-                    </HeaderedItemsControl.ItemTemplate>
-                </HeaderedItemsControl>
+                    </DataTemplate>
+                </HeaderedItemsControl.ItemTemplate>
+            </HeaderedItemsControl>
 
 
-                <HeaderedItemsControl ItemsSource="{Binding SelectedMaterial.Inventorys}" Margin="0,10,0,0">
+            <HeaderedItemsControl Width="Auto" ItemsSource="{Binding SelectedMaterial.Inventorys}" Margin="20,10,0,0">
 
-                    <HeaderedItemsControl.Template>
-                        <ControlTemplate TargetType="HeaderedItemsControl">
-                            <StackPanel>
-                                <ContentPresenter ContentSource="Header" />
-                                <ItemsPresenter  />
-                            </StackPanel>
-                        </ControlTemplate>
-                    </HeaderedItemsControl.Template>
-                    <HeaderedItemsControl.Header>
+                <HeaderedItemsControl.Template>
+                    <ControlTemplate TargetType="HeaderedItemsControl">
+                        <StackPanel>
+                            <ContentPresenter ContentSource="Header" />
+                            <ItemsPresenter  />
+                        </StackPanel>
+                    </ControlTemplate>
+                </HeaderedItemsControl.Template>
+                <HeaderedItemsControl.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition SharedSizeGroup="A" />
+                            <ColumnDefinition SharedSizeGroup="B" />
+                            <ColumnDefinition SharedSizeGroup="C" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" TextAlignment="Center" Grid.ColumnSpan="3" Style="{StaticResource TitleText}" 
+                                       Text="Inventories" MinWidth="50" Margin="0,10,0,0" />
+                        <!--<TextBlock  Grid.Column="0" Grid.Row="1" Text="Material" />
+                             <TextBlock Grid.Column="1" Grid.Row="1" Text="Month" />
+                             <TextBlock   Grid.Column="2" Grid.Row="1" Text="Qty" />-->
+                    </Grid>
+                </HeaderedItemsControl.Header>
+                <HeaderedItemsControl.ItemTemplate>
+                    <DataTemplate>
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition SharedSizeGroup="A" />
                                 <ColumnDefinition SharedSizeGroup="B" />
                                 <ColumnDefinition SharedSizeGroup="C" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource TitleText}" Text="Inventories" MinWidth="50" Margin="0,10,0,0" />
-                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Material" />
-                            <TextBlock Grid.Column="1" Grid.Row="1" Text="Month" />
-                            <TextBlock Grid.Column="2" Grid.Row="1" Text="Qty" />
+                            <TextBlock Margin="0,0,15,0" Grid.Column="0" Text="{Binding Material}" />
+                            <TextBlock Margin="0,0,15,0" Grid.Column="1" Text="{Binding Warehouse}" />
+                            <TextBlock Margin="0,0,15,0" Grid.Column="2" Text="{Binding Path=Qty,  StringFormat='{}{0:#,###.}'}"  />
                         </Grid>
-                    </HeaderedItemsControl.Header>
-                    <HeaderedItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition SharedSizeGroup="A" />
-                                    <ColumnDefinition SharedSizeGroup="B" />
-                                    <ColumnDefinition SharedSizeGroup="C" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Material}" />
-                                <TextBlock Grid.Column="1" Text="{Binding Warehouse}" />
-                                <TextBlock Grid.Column="2" Text="{Binding Path=Qty,  StringFormat='{}{0:#,###.}'}"  />
-                            </Grid>
-                        </DataTemplate>
-                    </HeaderedItemsControl.ItemTemplate>
-                </HeaderedItemsControl>
+                    </DataTemplate>
+                </HeaderedItemsControl.ItemTemplate>
+            </HeaderedItemsControl>
 
-                
-                <HeaderedItemsControl ItemsSource="{Binding SelectedMaterial.Forecasts}"  >
+
+
+
+
+        </StackPanel>
+        <Rectangle Grid.Column="1" HorizontalAlignment="Left" Height="75" Margin="10,10,0,0" Grid.Row="2" Stroke="#FF938A8A" VerticalAlignment="Top" Width="99">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5" />
+                            <SkewTransform CenterY="0.5" CenterX="0.5" />
+                            <RotateTransform Angle="315" CenterY="0.5" CenterX="0.5" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#B2363638" Offset="0.538" />
+                    <GradientStop Color="#BF1E1291" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+
+    </Grid>
+</Window>
+
+
+
+<!--<HeaderedItemsControl ItemsSource="{Binding SelectedMaterial.Forecasts}"  >
                     <HeaderedItemsControl.Template>
                         <ControlTemplate TargetType="HeaderedItemsControl">
                             <StackPanel>
@@ -326,16 +401,4 @@
                         </Grid>
                     </DataTemplate>
                 </HeaderedItemsControl.ItemTemplate>
-            </HeaderedItemsControl>
-
-
-
-            <!--<DataGrid ItemsSource="{Binding SelectedMaterial.OrderChanges}"  Margin="0,20,0,0" HorizontalAlignment="Left" Width="332"/>
-            <DataGrid ItemsSource="{Binding SelectedMaterial.Incomings}"   Margin="0,20,0,0" HorizontalAlignment="Left" Width="332"/>
-            <DataGrid ItemsSource="{Binding SelectedMaterial.Forecasts}"   Margin="0,20,0,0" HorizontalAlignment="Left" Width="332"/>-->
-
-        </StackPanel>
-       
-
-    </Grid>
-</Window>
+            </HeaderedItemsControl>-->
